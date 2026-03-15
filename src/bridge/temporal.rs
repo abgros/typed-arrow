@@ -665,8 +665,7 @@ impl ArrowBinding for jiff::Timestamp {
     }
 
     fn new_builder(capacity: usize) -> Self::Builder {
-        PrimitiveBuilder::<TimestampMicrosecondType>::with_capacity(capacity)
-            .with_timezone("UTC")
+        PrimitiveBuilder::<TimestampMicrosecondType>::with_capacity(capacity).with_timezone("UTC")
     }
 
     fn append_value(b: &mut Self::Builder, v: &Self) {
