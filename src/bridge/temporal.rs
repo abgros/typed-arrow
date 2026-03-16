@@ -661,11 +661,11 @@ impl ArrowBinding for jiff::Timestamp {
     type Array = PrimitiveArray<TimestampMicrosecondType>;
 
     fn data_type() -> DataType {
-        DataType::Timestamp(TimeUnit::Microsecond, None)
+        DataType::Timestamp(TimeUnit::Microsecond, Some("UTC".into()))
     }
 
     fn new_builder(capacity: usize) -> Self::Builder {
-        PrimitiveBuilder::<TimestampMicrosecondType>::with_capacity(capacity)
+        PrimitiveBuilder::<TimestampMicrosecondType>::with_capacity(capacity).with_timezone("UTC")
     }
 
     fn append_value(b: &mut Self::Builder, v: &Self) {
